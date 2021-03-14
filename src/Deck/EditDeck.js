@@ -19,7 +19,6 @@ function EditDeck() {
       ...formData,
       [target.name]: value,
     });
-    console.log(formData);
   };
 
   const handleReset = (event) => {

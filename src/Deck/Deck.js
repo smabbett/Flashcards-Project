@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import Card from '../Card/Card';
-import { deleteDeck } from '../utils/api';
+import { deleteDeck, readDeck } from '../utils/api';
 
-export const Deck = ({ decks }) => {
+export const Deck = () => {
   const { deckId } = useParams();
   const history = useHistory();
+  const [deck, setDeck] = useState({ cards: [] });
 
-  const deck = decks.find((deck) => deck.id === Number(deckId));
+  // const deck = decks.find((deck) => deck.id === Number(deckId));
+  useEffect(() => {
+    readDeck(deckId).then(setDeck);
+  }, []);
 
+  // if (!deck.cards) {
+  //   return <span>Loading...</span>;
+  // }
   if (deck) {
     const list = deck.cards.map((card) => <Card key={card.id} card={card} />);
     return (
@@ -62,8 +69,9 @@ export const Deck = ({ decks }) => {
         </div>
       </div>
     );
+  } else {
+    return <div>No such deck</div>;
   }
-  return <div>No such deck</div>;
 };
 
 export default Deck;

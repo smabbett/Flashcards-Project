@@ -24,7 +24,6 @@ function AddCard() {
       ...formData,
       [target.name]: value,
     });
-    console.log(formData);
   };
 
   const handleReset = (event) => {
@@ -53,7 +52,7 @@ function AddCard() {
             <a href="/">Home</a>
           </li>
           <li className="breadcrumb-item" aria-current="page">
-            <a href={`/decks/${currentDeck.id}`}>{currentDeck.name}</a>
+            <a href={`/decks/${deckId}`}>{currentDeck.name}</a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">
             Add Card
@@ -77,7 +76,7 @@ function AddCard() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="description" className="form-label">
+          <label htmlFor="back" className="form-label">
             Back Side
           </label>
           <textarea

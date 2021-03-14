@@ -16,18 +16,18 @@ export const Card = ({ card }) => {
   };
 
   return (
-    <div class="container">
-      <div class="card col-md-10">
+    <div className="container">
+      <div className="card col-md-10">
         <div className="row">
-          <div class="col-md-6">
-            <div class="card-body">
-              <p class="card-text">{card.front}</p>
+          <div className="col-md-6">
+            <div className="card-body">
+              <p className="card-text">{card.front}</p>
             </div>
           </div>
 
-          <div class="col-md-6">
-            <div class="card-body">
-              <p class="card-text">{card.back}</p>
+          <div className="col-md-6">
+            <div className="card-body">
+              <p className="card-text">{card.back}</p>
               <div className="text-right">
                 <Link
                   to={`/decks/${deckId}/cards/${card.id}/edit`}

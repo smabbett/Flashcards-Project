@@ -20,7 +20,6 @@ function CreateDeck() {
       ...formData,
       [target.name]: value,
     });
-    console.log(formData);
   };
 
   const handleReset = (event) => {
@@ -39,8 +38,6 @@ function CreateDeck() {
   };
   useEffect(() => {
     if (formData.id) {
-      console.log(formData);
-      //readDecks
       history.push(`/decks/${formData.id}`);
     }
   }, [formData]);

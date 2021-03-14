@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Rendering in React",
-      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
+      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation?"
     },
     {
       "name": "React Router",
@@ -11,42 +11,23 @@
       "id": 2
     },
     {
-      "name": "Spanish 101",
-      "description": "Let's learn Spanish",
-      "id": 3
-    },
-    {
-      "name": "German 101",
-      "description": "Let's learn German",
+      "name": "German",
+      "description": "Learn German",
       "id": 4
     },
     {
-      "name": "English",
-      "description": "Speaking English",
+      "name": "Shoe",
+      "description": "Size",
       "id": 5
-    },
-    {
-      "name": "Spanish 2",
-      "description": "Learn spanish",
-      "id": 6
-    },
-    {
-      "name": "Spanish 2",
-      "description": "learn",
-      "id": 7
-    },
-    {
-      "name": "sjsjs",
-      "description": "dkdkdk",
-      "id": 8
     }
   ],
   "cards": [
     {
       "id": 1,
-      "front": "Differentiate between Real DOM and Virtual DOM.",
-      "back": "Virtual DOM updates are faster but do not directly update the HTML",
-      "deckId": 1
+      "front": "Differentiate between Real DOM and Virtual DOM.h",
+      "back": "Virtual DOM updates are faster but do not directly update the HTMLh",
+      "deckId": 1,
+      "name": "Differentiate between Real DOM and Virtual DOM.j"
     },
     {
       "id": 2,
@@ -80,46 +61,10 @@
       "id": 7
     },
     {
-      "front": "dlfkajsd",
-      "back": "lkgjadkf",
-      "deckId": 1,
-      "id": 8
-    },
-    {
-      "front": "How to Cook",
-      "back": "This is how to cook",
-      "deckId": 1,
-      "id": 9
-    },
-    {
-      "front": "Bug",
-      "back": "Bug study",
-      "deckId": 1,
+      "front": "jdjdjd",
+      "back": "ddd",
+      "deckId": 4,
       "id": 10
-    },
-    {
-      "front": "",
-      "back": "",
-      "deckId": 1,
-      "id": 11
-    },
-    {
-      "front": "dormir",
-      "back": "sleep",
-      "deckId": 3,
-      "id": 12
-    },
-    {
-      "front": "salir",
-      "back": "leave",
-      "deckId": 3,
-      "id": 13
-    },
-    {
-      "front": "dormir",
-      "back": "sleep",
-      "deckId": 3,
-      "id": 14
     }
   ]
 }

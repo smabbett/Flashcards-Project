@@ -28,6 +28,10 @@ export const Study = () => {
     return () => abortController.abort();
   }, []);
 
+  if (error) {
+    return <ErrorMessage error={error} />;
+  }
+
   function nextCard() {
     if (cardIndex === cards.length - 1) {
       const result = window.confirm('Do you want to restart the deck?');
@@ -43,11 +47,8 @@ export const Study = () => {
   function flipCard() {
     setFlipped((prevState) => !prevState);
   }
-  if (error) {
-    return <ErrorMessage error={error} />;
-  }
 
-  if (deck && cards)
+  if (deck && cards) {
     return (
       <>
         <nav aria-label="breadcrumb">
@@ -110,5 +111,6 @@ export const Study = () => {
         </div>
       </>
     );
+  }
 };
 export default Study;

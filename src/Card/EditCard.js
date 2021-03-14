@@ -7,9 +7,8 @@ function EditCard() {
   const { deckId, cardId } = useParams();
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(undefined);
-  const [currentDeck, setCurrentDeck] = useState([]);
+  const [currentDeck, setCurrentDeck] = useState({});
 
-  console.log(currentDeck);
   useEffect(() => {
     readCard(cardId).then(setFormData);
     readDeck(deckId).then(setCurrentDeck);
@@ -22,7 +21,6 @@ function EditCard() {
       ...formData,
       [target.name]: value,
     });
-    console.log(formData);
   };
 
   const handleReset = (event) => {
@@ -30,9 +28,7 @@ function EditCard() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const abortController = new AbortController();
-
     updateCard(formData, abortController.signal).then().catch(setError);
 
     if (error) {
@@ -65,8 +61,8 @@ function EditCard() {
             <textarea
               type="textarea"
               className="form-control"
-              id="name"
-              name="name"
+              id="front"
+              name="front"
               placeholder={formData.front}
               onChange={handleChange}
               value={formData.front}
@@ -87,7 +83,7 @@ function EditCard() {
             />
           </div>
           <input
-            className="btn btn-secondary"
+            className="btn btn-secondary mr-3"
             type="reset"
             onClick={handleReset}
             value="Reset"
