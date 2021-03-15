@@ -8,6 +8,7 @@ export const Study = () => {
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
   const [cards, setCards] = useState([]);
+
   const [error, setError] = useState(undefined);
   const [flipped, setFlipped] = useState(false);
   const [cardIndex, setCardIndex] = useState(0);
@@ -20,14 +21,16 @@ export const Study = () => {
         setDeck(data);
         let cardData = await listCards(deckId, abortController.signal);
         setCards(cardData);
+
+        // setCards(deck.cards);
       } catch (err) {
         setError(err);
       }
     }
     getDeck();
+
     return () => abortController.abort();
   }, []);
-
   if (error) {
     return <ErrorMessage error={error} />;
   }
@@ -48,7 +51,12 @@ export const Study = () => {
     setFlipped((prevState) => !prevState);
   }
 
-  if (deck && cards) {
+  console.log('deck', deck);
+  console.log('cards', cards);
+  console.log('deckId', deckId);
+  console.log('deck.cards', deck.cards);
+  console.log('length', cards.length);
+  if (deck) {
     return (
       <>
         <nav aria-label="breadcrumb">

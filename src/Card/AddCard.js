@@ -47,14 +47,14 @@ function AddCard() {
   return (
     <>
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
             <a href="/">Home</a>
           </li>
           <li className="breadcrumb-item" aria-current="page">
             <a href={`/decks/${deckId}`}>{currentDeck.name}</a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">
+          <li className="breadcrumb-item active" aria-current="page">
             Add Card
           </li>
         </ol>
@@ -90,7 +90,7 @@ function AddCard() {
           />
         </div>
         <input
-          class="btn btn-secondary mr-3"
+          className="btn btn-secondary mr-3"
           type="reset"
           onClick={handleReset}
           value="Reset"

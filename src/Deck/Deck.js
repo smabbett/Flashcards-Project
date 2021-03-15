@@ -8,14 +8,10 @@ export const Deck = () => {
   const history = useHistory();
   const [deck, setDeck] = useState({ cards: [] });
 
-  // const deck = decks.find((deck) => deck.id === Number(deckId));
   useEffect(() => {
     readDeck(deckId).then(setDeck);
   }, []);
 
-  // if (!deck.cards) {
-  //   return <span>Loading...</span>;
-  // }
   if (deck) {
     const list = deck.cards.map((card) => <Card key={card.id} card={card} />);
     return (
