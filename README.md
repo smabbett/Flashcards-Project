@@ -10,5 +10,9 @@ The application allows teachers to create, update, read and delete decks of flas
 * JSX
 * Javascript
 
+## Deployment
 
+* [Flashcards App](https://project-pomodoro-timer-beta.vercel.app/)
+
+![Screenshot](./screenshot.png)
 
