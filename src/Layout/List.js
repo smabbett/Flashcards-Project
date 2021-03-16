@@ -4,21 +4,20 @@ import { Link, useHistory } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
 
 export const List = () => {
-  const history = useHistory();
+  //const history = useHistory();
   const [decks, setDecks] = useState([]);
   const [error, setError] = useState(undefined);
 
-  useEffect(() => {
-    const abortController = new AbortController();
-    async function getData() {
-      try {
-        let data = await listDecks(abortController.signal);
-
-        setDecks(data);
-      } catch (err) {
-        setError(err);
-      }
+  const abortController = new AbortController();
+  async function getData() {
+    try {
+      let data = await listDecks(abortController.signal);
+      setDecks(data);
+    } catch (err) {
+      setError(err);
     }
+  }
+  useEffect(() => {
     getData();
     return () => abortController.abort();
   }, []);
@@ -59,7 +58,8 @@ export const List = () => {
                   'Delete this deck? \nYou will not be able to recover it.'
                 );
                 if (result) {
-                  deleteDeck(deck.id).then(history.push('/'));
+                  deleteDeck(deck.id);
+                  getData();
                 }
               }}
             >
