@@ -5,7 +5,6 @@ import ErrorMessage from './ErrorMessage';
 
 export const List = () => {
   const history = useHistory();
-
   const [decks, setDecks] = useState([]);
   const [error, setError] = useState(undefined);
 

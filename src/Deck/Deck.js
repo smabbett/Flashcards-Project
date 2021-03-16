@@ -10,7 +10,7 @@ export const Deck = () => {
 
   useEffect(() => {
     readDeck(deckId).then(setDeck);
-  }, []);
+  }, [deckId]);
 
   if (deck) {
     const list = deck.cards.map((card) => <Card key={card.id} card={card} />);

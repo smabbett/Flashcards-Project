@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { createCard, readDeck } from '../utils/api';
 import ErrorMessage from '../Layout/ErrorMessage';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+import CardForm from './CardForm';
 
 function AddCard() {
   const initialState = {
@@ -11,11 +12,12 @@ function AddCard() {
   const { deckId } = useParams();
   const [formData, setFormData] = useState({ ...initialState });
   const [error, setError] = useState(undefined);
-  const [currentDeck, setCurrentDeck] = useState([]);
+  const [deck, setDeck] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
-    readDeck(deckId).then(setCurrentDeck);
-  }, []);
+    readDeck(deckId).then(setDeck);
+  }, [deckId]);
 
   const handleChange = ({ target }) => {
     const value = target.value;
@@ -31,19 +33,24 @@ function AddCard() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const abortController = new AbortController();
 
     createCard(deckId, formData, abortController.signal)
-      .then(handleReset())
+      .then((data) => setFormData(data))
       .catch(setError);
 
-    if (error) {
-      return <ErrorMessage error={error} />;
-    }
     return () => abortController.abort();
   };
 
+  useEffect(() => {
+    if (formData.id) {
+      history.push(`/decks/${deckId}`);
+    }
+  }, [formData.id, history, deckId]);
+
+  if (error) {
+    return <ErrorMessage error={error} />;
+  }
   return (
     <>
       <nav aria-label="breadcrumb">
@@ -52,53 +59,20 @@ function AddCard() {
             <a href="/">Home</a>
           </li>
           <li className="breadcrumb-item" aria-current="page">
-            <a href={`/decks/${deckId}`}>{currentDeck.name}</a>
+            <a href={`/decks/${deckId}`}>{deck.name}</a>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             Add Card
           </li>
         </ol>
       </nav>
-      <h1>{currentDeck.name}: Add Card</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="front" className="form-label">
-            Front Side
-          </label>
-          <textarea
-            type="textarea"
-            className="form-control"
-            id="front"
-            name="front"
-            placeholder="Front Side"
-            onChange={handleChange}
-            value={formData.front}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="back" className="form-label">
-            Back Side
-          </label>
-          <textarea
-            type="textarea"
-            className="form-control"
-            id="back"
-            name="back"
-            placeholder="Back Side"
-            onChange={handleChange}
-            value={formData.back}
-          />
-        </div>
-        <input
-          className="btn btn-secondary mr-3"
-          type="reset"
-          onClick={handleReset}
-          value="Reset"
-        ></input>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+      <h1>{deck.name}: Add Card</h1>
+      <CardForm
+        formData={formData}
+        handleChange={handleChange}
+        handleReset={handleReset}
+        handleSubmit={handleSubmit}
+      />
     </>
   );
 }

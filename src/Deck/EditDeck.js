@@ -10,7 +10,7 @@ function EditDeck() {
 
   useEffect(() => {
     readDeck(deckId).then(setFormData);
-  }, []);
+  }, [deckId]);
 
   const handleChange = ({ target }) => {
     const value = target.value;

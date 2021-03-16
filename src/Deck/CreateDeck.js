@@ -36,11 +36,13 @@ function CreateDeck() {
 
     return () => abortController.abort();
   };
+
   useEffect(() => {
     if (formData.id) {
       history.push(`/decks/${formData.id}`);
     }
-  }, [formData]);
+  }, [formData.id, history]);
+
   if (error) {
     return <ErrorMessage error={error} />;
   }

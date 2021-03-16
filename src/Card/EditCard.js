@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { updateCard, readCard, readDeck } from '../utils/api';
 import ErrorMessage from '../Layout/ErrorMessage';
+import CardForm from './CardForm';
 
 function EditCard() {
   const { deckId, cardId } = useParams();
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(undefined);
-  const [currentDeck, setCurrentDeck] = useState({});
+  const [deck, setDeck] = useState({});
 
   useEffect(() => {
     readCard(cardId).then(setFormData);
-    readDeck(deckId).then(setCurrentDeck);
-  }, []);
+    readDeck(deckId).then(setDeck);
+  }, [cardId, deckId]);
 
   const handleChange = ({ target }) => {
     const value = target.value;
@@ -36,7 +37,7 @@ function EditCard() {
     }
   };
 
-  if (formData && currentDeck)
+  if (formData && deck) {
     return (
       <>
         <nav aria-label="breadcrumb">
@@ -45,7 +46,7 @@ function EditCard() {
               <a href="/">Home</a>
             </li>
             <li className="breadcrumb-item">
-              <Link to={`/decks/${deckId}`}>{currentDeck.name}</Link>
+              <Link to={`/decks/${deckId}`}>{deck.name}</Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Edit Card {`${cardId}`}
@@ -53,47 +54,15 @@ function EditCard() {
           </ol>
         </nav>
         <h1>Edit Card</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="front" className="form-label">
-              Front Side
-            </label>
-            <textarea
-              type="textarea"
-              className="form-control"
-              id="front"
-              name="front"
-              placeholder={formData.front}
-              onChange={handleChange}
-              value={formData.front}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="back" className="form-label">
-              Back Side
-            </label>
-            <textarea
-              type="textarea"
-              className="form-control"
-              id="back"
-              name="back"
-              placeholder={formData.back}
-              onChange={handleChange}
-              value={formData.back}
-            />
-          </div>
-          <input
-            className="btn btn-secondary mr-3"
-            type="reset"
-            onClick={handleReset}
-            value="Reset"
-          ></input>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
+        <CardForm
+          formData={formData}
+          handleChange={handleChange}
+          handleReset={handleReset}
+          handleSubmit={handleSubmit}
+        />
       </>
     );
+  }
 }
 
 export default EditCard;

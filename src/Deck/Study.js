@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { readDeck } from '../utils/api';
 import ErrorMessage from '../Layout/ErrorMessage';
-import classNames from '../utils/class-names';
 
 export const Study = () => {
   const { deckId } = useParams();
@@ -23,7 +22,7 @@ export const Study = () => {
     }
     getDeck();
     return () => abortController.abort();
-  }, []);
+  }, [deckId]);
 
   if (error) {
     return <ErrorMessage error={error} />;
