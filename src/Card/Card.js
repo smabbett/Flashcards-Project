@@ -33,11 +33,11 @@ export const Card = ({ card }) => {
                   to={`/decks/${deckId}/cards/${card.id}/edit`}
                   className="btn btn-secondary m-2"
                 >
-                  Edit
+                  <span className="oi oi-pencil" /> Edit
                 </Link>
 
                 <button className="btn btn-danger m-2" onClick={handleDelete}>
-                  Delete
+                  <span className="oi oi-circle-x" /> Delete
                 </button>
               </div>
             </div>

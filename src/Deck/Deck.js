@@ -19,7 +19,9 @@ export const Deck = () => {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="/">Home</a>
+              <a href="/">
+                <span className="oi oi-home" /> Home
+              </a>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               {deck.name}
@@ -31,18 +33,18 @@ export const Deck = () => {
           <p className="card-text">{deck.description}</p>
 
           <Link to={`/decks/${deck.id}/edit`} className="btn btn-secondary m-2">
-            Edit
+            <span className="oi oi-pencil" /> Edit
           </Link>
 
           <Link to={`/decks/${deck.id}/study`} className="btn btn-primary m-2">
-            Study
+            <span className="oi oi-book" /> Study
           </Link>
 
           <Link
             to={`/decks/${deck.id}/cards/new`}
             className="btn btn-secondary m-2"
           >
-            Add Cards
+            <span className="oi oi-plus" /> Add Cards
           </Link>
           <button
             className="btn btn-danger m-2"
@@ -56,7 +58,7 @@ export const Deck = () => {
               }
             }}
           >
-            Delete
+            <span className="oi oi-circle-x" /> Delete
           </button>
         </div>
         <div>

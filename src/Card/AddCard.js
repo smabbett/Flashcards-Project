@@ -56,13 +56,16 @@ function AddCard() {
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <a href="/">Home</a>
+            <a href="/">
+              <span className="oi oi-home" />
+              Home
+            </a>
           </li>
           <li className="breadcrumb-item" aria-current="page">
             <a href={`/decks/${deckId}`}>{deck.name}</a>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Add Card
+            <span className="oi oi-plus" /> Add Card
           </li>
         </ol>
       </nav>

@@ -41,14 +41,14 @@ export const List = () => {
             <p className="card-text">{deck.description}</p>
 
             <Link to={`/decks/${deck.id}`} className="btn btn-secondary mr-2">
-              View
+              <span className="oi oi-eye" /> View
             </Link>
 
             <Link
               to={`/decks/${deck.id}/study`}
               className="btn btn-primary mr-2"
             >
-              Study
+              <span className="oi oi-book" /> Study
             </Link>
 
             <button
@@ -63,7 +63,7 @@ export const List = () => {
                 }
               }}
             >
-              Delete
+              <span className="oi oi-circle-x" /> Delete
             </button>
           </div>
         </div>
@@ -74,7 +74,7 @@ export const List = () => {
       <main className="container">
         <div>
           <Link to="decks/new" className="btn btn-secondary m-3">
-            Create Deck
+            <span className="oi oi-plus" /> Create Deck
           </Link>
         </div>
         <section className="row">{list}</section>

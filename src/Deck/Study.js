@@ -50,7 +50,9 @@ export const Study = () => {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="/">Home</a>
+              <a href="/">
+                <span className="oi oi-home" /> Home
+              </a>
             </li>
             <li className="breadcrumb-item" aria-current="page">
               <a href={`/decks/${deck.id}`}>{deck.name}</a>
@@ -74,11 +76,11 @@ export const Study = () => {
                     : `${deck.cards[cardIndex].back}`}
                 </p>
                 <button className="btn btn-secondary m-2" onClick={flipCard}>
-                  Flip
+                  <span className="oi oi-action-redo" /> Flip
                 </button>
                 {flipped && (
                   <button className="btn btn-primary" onClick={nextCard}>
-                    Next
+                    <span className="oi oi-arrow-thick-right" /> Next
                   </button>
                 )}
               </div>
@@ -94,7 +96,7 @@ export const Study = () => {
                 to={`/decks/${deck.id}/cards/new`}
                 className="btn btn-primary"
               >
-                Add Cards
+                <span className="oi oi-plus" /> Add Cards
               </Link>
             </>
           )}
