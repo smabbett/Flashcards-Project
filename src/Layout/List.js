@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { deleteDeck, listDecks } from '../utils/api';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
 
 export const List = () => {
-  //const history = useHistory();
   const [decks, setDecks] = useState([]);
   const [error, setError] = useState(undefined);
 

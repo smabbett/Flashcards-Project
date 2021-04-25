@@ -2,13 +2,15 @@
  * Defines the base URL for the API.
  * The default values is overridden by the `API_BASE_URL` environment variable.
  */
-const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:5000";
+//const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:5000";
+
+const API_BASE_URL = process.env.API_BASE_URL || 3000;
 
 /**
  * Defines the default headers for these functions to work with `json-server`
  */
 const headers = new Headers();
-headers.append("Content-Type", "application/json");
+headers.append('Content-Type', 'application/json');
 
 /**
  * Removes the `cards` property from the deck so it is not accidentally saved with the deck.
@@ -46,7 +48,7 @@ async function fetchJson(url, options) {
     }
     return await response.json();
   } catch (error) {
-    if (error.name !== "AbortError") {
+    if (error.name !== 'AbortError') {
       throw error;
     }
   }
@@ -75,7 +77,7 @@ export async function listDecks(signal) {
 export async function createDeck(deck, signal) {
   const url = `${API_BASE_URL}/decks`;
   const options = {
-    method: "POST",
+    method: 'POST',
     headers,
     body: JSON.stringify(stripCards(deck)),
     signal,
@@ -109,7 +111,7 @@ export async function readDeck(deckId, signal) {
 export async function updateDeck(updatedDeck, signal) {
   const url = `${API_BASE_URL}/decks/${updatedDeck.id}?_embed=cards`;
   const options = {
-    method: "PUT",
+    method: 'PUT',
     headers,
     body: JSON.stringify(stripCards(updatedDeck)),
     signal,
@@ -128,7 +130,7 @@ export async function updateDeck(updatedDeck, signal) {
  */
 export async function deleteDeck(deckId, signal) {
   const url = `${API_BASE_URL}/decks/${deckId}`;
-  const options = { method: "DELETE", signal };
+  const options = { method: 'DELETE', signal };
   return await fetchJson(url, options);
 }
 
@@ -164,7 +166,7 @@ export async function createCard(deckId, card, signal) {
   const url = `${API_BASE_URL}/cards`;
   card.deckId = Number(deckId);
   const options = {
-    method: "POST",
+    method: 'POST',
     headers,
     body: JSON.stringify(card),
     signal,
@@ -198,7 +200,7 @@ export async function readCard(cardId, signal) {
 export async function updateCard(updatedCard, signal) {
   const url = `${API_BASE_URL}/cards/${updatedCard.id}`;
   const options = {
-    method: "PUT",
+    method: 'PUT',
     headers,
     body: JSON.stringify(updatedCard),
   };
@@ -216,6 +218,6 @@ export async function updateCard(updatedCard, signal) {
  */
 export async function deleteCard(cardId, signal) {
   const url = `${API_BASE_URL}/cards/${cardId}`;
-  const options = { method: "DELETE", signal };
+  const options = { method: 'DELETE', signal };
   return await fetchJson(url, options);
 }
