@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { deleteDeck, listDecks } from '../utils/api';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
 
 export const List = () => {
   const [decks, setDecks] = useState([]);
   const [error, setError] = useState(undefined);
+  const history = useHistory()
 
   const abortController = new AbortController();
   async function getData() {
@@ -57,7 +58,7 @@ export const List = () => {
                   'Delete this deck? \nYou will not be able to recover it.'
                 );
                 if (result) {
-                  deleteDeck(deck.id);
+                  deleteDeck(deck.id).then(()=> history.push('/') )
                   getData();
                 }
               }}
