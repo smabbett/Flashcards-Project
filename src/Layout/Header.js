@@ -1,11 +1,10 @@
 import React from 'react';
-import headerImage from "../flashcards.png"
-
+import headerImage from '../images/flashcards.png';
 
 const style = {
   background: `url(${headerImage})`,
-  backgroundPosition: "center",
-  backgroundSize: "100% auto",
+  backgroundPosition: 'center',
+  backgroundSize: '100% auto',
 };
 
 function Header() {

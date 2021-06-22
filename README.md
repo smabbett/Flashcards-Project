@@ -1,18 +1,18 @@
 # Flashcards App
 
-The application allows teachers to create, update, read and delete decks of flashcards. Students can view the decks or study the decks.
+This application was created in the Thinkful Software Engineering Flex program. This project demonstrates my knowledge of hooks, state management, routes and API calls.
 
+The application allows teachers to create, update, read and delete decks of flashcards. Students can view the decks or study the decks.
 
 ## Built With
 
-* React.js
-* Bootstrap
-* JSX
-* Javascript
+- React.js
+- Bootstrap
+- JSX
+- Javascript
 
 ## Deployment
 
-* [Flashcards App](https://flashcards-6uc006sz7-smabbett.vercel.app/)
+- [Flashcards App](https://flashcards-wine.vercel.app/)
 
-![Screenshot](./screenshot.png)
-
+![Screenshot](./src/images/screenshot_flash.png)
