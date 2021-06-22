@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { updateDeck, readDeck } from '../utils/api';
 import ErrorMessage from '../Layout/ErrorMessage';
 
@@ -7,6 +7,7 @@ function EditDeck() {
   const { deckId } = useParams();
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(undefined);
+  const history = useHistory();
 
   useEffect(() => {
     readDeck(deckId).then(setFormData);
@@ -27,7 +28,9 @@ function EditDeck() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const abortController = new AbortController();
-    updateDeck(formData, abortController.signal).then().catch(setError);
+    updateDeck(formData, abortController.signal)
+      .then(history.push('/'))
+      .catch(setError);
 
     if (error) {
       return <ErrorMessage error={error} />;

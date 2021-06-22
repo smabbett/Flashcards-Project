@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { updateCard, readCard, readDeck } from '../utils/api';
 import ErrorMessage from '../Layout/ErrorMessage';
 import CardForm from './CardForm';
@@ -9,6 +9,7 @@ function EditCard() {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(undefined);
   const [deck, setDeck] = useState({});
+  const history = useHistory();
 
   useEffect(() => {
     readCard(cardId).then(setFormData);
@@ -30,7 +31,9 @@ function EditCard() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const abortController = new AbortController();
-    updateCard(formData, abortController.signal).then().catch(setError);
+    updateCard(formData, abortController.signal)
+      .then(history.push('/'))
+      .catch(setError);
 
     if (error) {
       return <ErrorMessage error={error} />;

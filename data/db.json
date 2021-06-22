@@ -2,7 +2,7 @@
   "decks": [
     {
       "id": 1,
-      "name": "Rendering in Reactd",
+      "name": "Rendering in React",
       "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation?"
     },
     {
@@ -41,7 +41,7 @@
     },
     {
       "id": 2,
-      "front": "How do you modify the state of a different React component?",
+      "front": "How do you modify the state of a different React component??",
       "back": "Not at all! State is visible to the component only.",
       "deckId": 1
     },
@@ -64,8 +64,8 @@
       "id": 5
     },
     {
-      "front": "gg",
-      "back": "hh",
+      "front": "Learn",
+      "back": "To",
       "deckId": 1,
       "id": 11
     },
