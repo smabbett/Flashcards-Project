@@ -19,17 +19,21 @@ export const Card = ({ card }) => {
     <div className="col-lg-4">
       <div className="card shadow mt-4">
         <div className="card-header d-flex justify-content-between">
-          <div>Front</div><div>Back</div>
+          <div>Front</div>
+          <div>Back</div>
         </div>
-        <div className="card-body d-flex justify-content-between">
-          
+        <div
+          className="card-body d-flex justify-content-between"
+          style={{ height: '10rem' }}
+        >
           <p className="card-text pr-3">{card.front}</p>
           <p className="card-text pl-3">{card.back}</p>
         </div>
         <div className="card-footer d-flex justify-content-between bg-transparent">
           <Link
             to={`/decks/${deckId}/cards/${card.id}/edit`}
-            className="btn btn-secondary m-2">
+            className="btn btn-secondary m-2"
+          >
             <span className="oi oi-pencil" /> Edit
           </Link>
           <button className="btn btn-danger m-2" onClick={handleDelete}>
@@ -38,11 +42,6 @@ export const Card = ({ card }) => {
         </div>
       </div>
     </div>
-      
-      
-        
-      
-    
   );
 };
 export default Card;

@@ -34,37 +34,49 @@ export const Deck = () => {
             <p className="card-text">{deck.description}</p>
           </div>
           <div className="card-footer bg-transparent d-flex justify-content-center">
-            <Link to={`/decks/${deck.id}/edit`} className="btn btn-secondary m-2">
-            <span className="oi oi-pencil" /> Edit
-            </Link>
-
-            <Link to={`/decks/${deck.id}/study`} className="btn btn-primary m-2">
-            <span className="oi oi-book" /> Study
+            <Link
+              to={`/decks/${deck.id}/edit`}
+              className="btn btn-secondary m-2"
+            >
+              <span className="oi oi-pencil" /> Edit
             </Link>
 
             <Link
-            to={`/decks/${deck.id}/cards/new`}
-            className="btn btn-secondary m-2">
-            <span className="oi oi-plus" /> Add Cards
+              to={`/decks/${deck.id}/study`}
+              className="btn btn-primary m-2"
+            >
+              <span className="oi oi-book" /> Study
+            </Link>
+
+            <Link
+              to={`/decks/${deck.id}/cards/new`}
+              className="btn btn-secondary m-2"
+            >
+              <span className="oi oi-plus" /> Add Cards
             </Link>
             <button
-            className="btn btn-danger m-2"
-            id={deck.id}
-            onClick={async () => {
-              const result = window.confirm(
-                'Delete this deck? \nYou will not be able to recover it.'
-              );
-              if (result) {
-                deleteDeck(deck.id).then(history.push('/'));
-              }
-            }}>
-            <span className="oi oi-circle-x" /> Delete
+              className="btn btn-danger m-2"
+              id={deck.id}
+              onClick={async () => {
+                const result = window.confirm(
+                  'Delete this deck? \nYou will not be able to recover it.'
+                );
+                if (result) {
+                  deleteDeck(deck.id).then(history.push('/'));
+                }
+              }}
+            >
+              <span className="oi oi-circle-x" /> Delete
             </button>
           </div>
         </div>
         <div>
           <h2>Cards</h2>
-          <div className="row row-cols-lg-3 row-cols-sm-1 g-4">{list}</div>
+          {list.length ? (
+            <div className="row row-cols-lg-3 row-cols-sm-1 g-4">{list}</div>
+          ) : (
+            <p>This deck is empty. Do you want to add some cards?</p>
+          )}
         </div>
       </div>
     );

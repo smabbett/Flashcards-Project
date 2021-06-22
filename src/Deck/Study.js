@@ -63,51 +63,54 @@ export const Study = () => {
           </ol>
         </nav>
         <h2>Now Studying: {deck.name}</h2>
-          {deck.cards.length > 2 ? (
-            <div className="card shadow mt-4 col-10">
-              <div className="card-body">
-                <h2 className="jumbotron bg-info text-center">
-                  {!flipped
-                    ? `${deck.cards[cardIndex].front}`
-                    : `${deck.cards[cardIndex].back}`}
-                </h2>
-                <small>
-                  Card {cardIndex + 1} of {deck.cards.length}
-                </small>
-              </div>
-              <div className="card-footer bg-transparent d-flex justify-content-between">
-              <button className="btn btn-secondary" onClick={flipCard}>
-                  <span className="oi oi-action-redo" /> Flip
-                </button>
-                {flipped && (
-                  <button className="btn btn-primary" onClick={nextCard}>
-                    <span className="oi oi-arrow-thick-right" /> Next
-                  </button>
-                )}
-              </div>
+        {deck.cards.length > 2 ? (
+          <div className="card shadow my-4 col-10">
+            <div className="card-body">
+              <h2
+                className="jumbotron bg-info text-center"
+                style={{ height: '20rem' }}
+              >
+                {!flipped
+                  ? `${deck.cards[cardIndex].front}`
+                  : `${deck.cards[cardIndex].back}`}
+              </h2>
+              <small>
+                Card {cardIndex + 1} of {deck.cards.length}
+              </small>
             </div>
-          ) : (
-            <>
+            <div className="card-footer bg-transparent d-flex justify-content-between">
+              <button className="btn btn-secondary" onClick={flipCard}>
+                <span className="oi oi-action-redo" /> Flip
+              </button>
+              {flipped && (
+                <button className="btn btn-primary" onClick={nextCard}>
+                  <span className="oi oi-arrow-thick-right" /> Next
+                </button>
+              )}
+            </div>
+          </div>
+        ) : (
+          <>
             <div className="card shadow mt-4">
               <h3 className="card-header">Not enough cards.</h3>
               <div className="card-body">
                 <p className="card-text">
-                You need at least 3 cards to study. There are{' '}
-                {deck.cards.length} cards in this deck.
+                  You need at least 3 cards to study. There are{' '}
+                  {deck.cards.length} cards in this deck.
                 </p>
               </div>
-            
-            <div className="card-footer bg-transparent">
-              <Link
-                to={`/decks/${deck.id}/cards/new`}
-                className="btn btn-primary"
-              >
-                <span className="oi oi-plus" /> Add Cards
-              </Link>
+
+              <div className="card-footer bg-transparent">
+                <Link
+                  to={`/decks/${deck.id}/cards/new`}
+                  className="btn btn-primary"
+                >
+                  <span className="oi oi-plus" /> Add Cards
+                </Link>
+              </div>
             </div>
-            </div>
-            </>
-          )}
+          </>
+        )}
         {/* </div> */}
       </>
     );

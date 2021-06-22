@@ -2,13 +2,13 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import NotFound from './NotFound';
-import CreateDeck from '../Deck/CreateDeck';
+//import CreateDeck from '../Deck/CreateDeck';
 import EditDeck from '../Deck/EditDeck';
 import Study from '../Deck/Study';
 import Deck from '../Deck/Deck';
 import List from './List';
 
-import AddCard from '../Card/AddCard';
+import CreateCard from '../Card/CreateCard';
 import EditCard from '../Card/EditCard';
 
 function Layout() {
@@ -21,7 +21,7 @@ function Layout() {
             <List />
           </Route>
           <Route path="/decks/new">
-            <CreateDeck />
+            <EditDeck />
           </Route>
           <Route path="/decks/:deckId/edit">
             <EditDeck />
@@ -30,7 +30,7 @@ function Layout() {
             <Study />
           </Route>
           <Route path="/decks/:deckId/cards/new">
-            <AddCard />
+            <CreateCard />
           </Route>
           <Route path="/decks/:deckId/cards/:cardId/edit">
             <EditCard />

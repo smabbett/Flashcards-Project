@@ -4,7 +4,7 @@ import ErrorMessage from '../Layout/ErrorMessage';
 import { useParams, useHistory } from 'react-router-dom';
 import CardForm from './CardForm';
 
-function AddCard() {
+function CreateCard() {
   const initialState = {
     front: '',
     back: '',
@@ -80,4 +80,4 @@ function AddCard() {
   );
 }
 
-export default AddCard;
+export default CreateCard;
