@@ -67,14 +67,14 @@ export const Study = () => {
           {deck.cards.length > 2 ? (
             <div className="card my-4 w-75">
               <div className="card-body">
-                <h5 className="card-title">
+                <small className="card-title">
                   Card {cardIndex + 1} of {deck.cards.length}
-                </h5>
-                <p className="card-text">
+                </small>
+                <h2 className="card-text text-center">
                   {!flipped
                     ? `${deck.cards[cardIndex].front}`
                     : `${deck.cards[cardIndex].back}`}
-                </p>
+                </h2>
                 <button className="btn btn-secondary m-2" onClick={flipCard}>
                   <span className="oi oi-action-redo" /> Flip
                 </button>
