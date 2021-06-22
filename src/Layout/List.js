@@ -70,7 +70,7 @@ export const List = () => {
   } else{
   
   return (
-    <div className="p-4 border border-top-0">
+    <div className="p-4 border">
       <p>Loading...</p>
     </div>
   );
