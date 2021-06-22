@@ -32,7 +32,7 @@ function EditCard() {
     event.preventDefault();
     const abortController = new AbortController();
     updateCard(formData, abortController.signal)
-      .then(history.push('/'))
+      .then(history.push(`/decks/${deckId}`))
       .catch(setError);
 
     if (error) {
