@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { deleteDeck, listDecks } from '../utils/api';
 import { Link } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
-import "./Layout.css"
 
 export const List = () => {
   const [decks, setDecks] = useState([]);
@@ -19,16 +18,17 @@ export const List = () => {
   if (error) {
     return <ErrorMessage error={error} />;
   }
-  if (decks) {
+  if (decks.length) {
     const list = decks.map((deck) => {
       return (
-        
-        <div key={deck.id} className="card mt-4">
+        <div key={deck.id} className="card shadow mt-4">
+          <h3 className="card-header">{deck.name}</h3>
           <div className="card-body">
-            <h5 className="card-title">{deck.name}</h5>
-            <small className="card-text text-muted">{`${deck.cards.length} cards`}</small>
             <p className="card-text">{deck.description}</p>
+            <small className="card-text text-muted">{`${deck.cards.length} cards`}</small>
            
+          </div>
+          <div className="card-footer bg-transparent d-flex justify-content-center">
             <Link to={`/decks/${deck.id}`} className="btn btn-secondary mr-2">
               <span className="oi oi-eye" /> View
             </Link>
@@ -52,27 +52,28 @@ export const List = () => {
             >
               <span className="oi oi-circle-x" /> Delete
             </button>
-            </div>
           </div>
-      
+        </div>
       );
     });
 
     return (
-      <main className="container-fluid">
+      <main className="container">
         <div>
           <Link to="decks/new" className="btn btn-secondary m-3">
             <span className="oi oi-plus" /> Create Deck
           </Link>
         </div>
-        <div className="card-columns">{list}</div>
+        <div>{list}</div>
       </main>
     );
-  }
+  } else{
+  
   return (
     <div className="p-4 border border-top-0">
       <p>Loading...</p>
     </div>
   );
+  }
 };
 export default List;

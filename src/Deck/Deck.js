@@ -28,26 +28,26 @@ export const Deck = () => {
             </li>
           </ol>
         </nav>
-        <div className="card w-100 mb-4">
+        <div className="card shadow mb-4">
+          <h3 className="card-header">{deck.name}</h3>
           <div className="card-body">
-          <h5 className="card-title">{deck.name}</h5>
-          <p className="card-text">{deck.description}</p>
-
-          <Link to={`/decks/${deck.id}/edit`} className="btn btn-secondary m-2">
+            <p className="card-text">{deck.description}</p>
+          </div>
+          <div className="card-footer bg-transparent d-flex justify-content-center">
+            <Link to={`/decks/${deck.id}/edit`} className="btn btn-secondary m-2">
             <span className="oi oi-pencil" /> Edit
-          </Link>
+            </Link>
 
-          <Link to={`/decks/${deck.id}/study`} className="btn btn-primary m-2">
+            <Link to={`/decks/${deck.id}/study`} className="btn btn-primary m-2">
             <span className="oi oi-book" /> Study
-          </Link>
+            </Link>
 
-          <Link
+            <Link
             to={`/decks/${deck.id}/cards/new`}
-            className="btn btn-secondary m-2"
-          >
+            className="btn btn-secondary m-2">
             <span className="oi oi-plus" /> Add Cards
-          </Link>
-          <button
+            </Link>
+            <button
             className="btn btn-danger m-2"
             id={deck.id}
             onClick={async () => {
@@ -57,15 +57,14 @@ export const Deck = () => {
               if (result) {
                 deleteDeck(deck.id).then(history.push('/'));
               }
-            }}
-          >
+            }}>
             <span className="oi oi-circle-x" /> Delete
-          </button>
-        </div>
+            </button>
+          </div>
         </div>
         <div>
           <h2>Cards</h2>
-          <div className="card-columns">{list}</div>
+          <div className="row row-cols-lg-3 row-cols-sm-1 g-4">{list}</div>
         </div>
       </div>
     );

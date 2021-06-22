@@ -16,26 +16,29 @@ export const Card = ({ card }) => {
   };
 
   return (
-      <div className="card mt-4">
-        <div className="card-body">
-          <div className="row">
-          <p className="card-text col-md-6">{card.front}</p>
-          <p className="card-text col-md-6">{card.back}</p>
-          </div>
-          <div className="row">
-                <Link
-                  to={`/decks/${deckId}/cards/${card.id}/edit`}
-                  className="btn btn-secondary m-2"
-                >
-                  <span className="oi oi-pencil" /> Edit
-                </Link>
-
-                <button className="btn btn-danger m-2" onClick={handleDelete}>
-                  <span className="oi oi-circle-x" /> Delete
-                </button>
-            </div>
+    <div className="col-lg-4">
+      <div className="card shadow mt-4">
+        <div className="card-header d-flex justify-content-between">
+          <div>Front</div><div>Back</div>
+        </div>
+        <div className="card-body d-flex justify-content-between">
+          
+          <p className="card-text pr-3">{card.front}</p>
+          <p className="card-text pl-3">{card.back}</p>
+        </div>
+        <div className="card-footer d-flex justify-content-between bg-transparent">
+          <Link
+            to={`/decks/${deckId}/cards/${card.id}/edit`}
+            className="btn btn-secondary m-2">
+            <span className="oi oi-pencil" /> Edit
+          </Link>
+          <button className="btn btn-danger m-2" onClick={handleDelete}>
+            <span className="oi oi-circle-x" /> Delete
+          </button>
         </div>
       </div>
+    </div>
+      
       
         
       
