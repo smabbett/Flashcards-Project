@@ -28,7 +28,8 @@ export const Deck = () => {
             </li>
           </ol>
         </nav>
-        <div>
+        <div className="card w-100 mb-4">
+          <div className="card-body">
           <h5 className="card-title">{deck.name}</h5>
           <p className="card-text">{deck.description}</p>
 
@@ -61,9 +62,10 @@ export const Deck = () => {
             <span className="oi oi-circle-x" /> Delete
           </button>
         </div>
+        </div>
         <div>
           <h2>Cards</h2>
-          <section>{list}</section>
+          <div className="card-columns">{list}</div>
         </div>
       </div>
     );

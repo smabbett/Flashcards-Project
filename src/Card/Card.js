@@ -16,19 +16,13 @@ export const Card = ({ card }) => {
   };
 
   return (
-    <div className="container">
-      <div className="card col-md-10">
-        <div className="row">
-          <div className="col-md-6">
-            <div className="card-body">
-              <p className="card-text">{card.front}</p>
-            </div>
+      <div className="card mt-4">
+        <div className="card-body">
+          <div className="row">
+          <p className="card-text col-md-6">{card.front}</p>
+          <p className="card-text col-md-6">{card.back}</p>
           </div>
-
-          <div className="col-md-6">
-            <div className="card-body">
-              <p className="card-text">{card.back}</p>
-              <div className="text-right">
+          <div className="row">
                 <Link
                   to={`/decks/${deckId}/cards/${card.id}/edit`}
                   className="btn btn-secondary m-2"
@@ -39,12 +33,13 @@ export const Card = ({ card }) => {
                 <button className="btn btn-danger m-2" onClick={handleDelete}>
                   <span className="oi oi-circle-x" /> Delete
                 </button>
-              </div>
             </div>
-          </div>
         </div>
       </div>
-    </div>
+      
+        
+      
+    
   );
 };
 export default Card;

@@ -65,7 +65,7 @@ export const Study = () => {
         <h1>Study: {deck.name}</h1>
         <div className="col-sm-12">
           {deck.cards.length > 2 ? (
-            <div className="card">
+            <div className="card my-4 w-75">
               <div className="card-body">
                 <h5 className="card-title">
                   Card {cardIndex + 1} of {deck.cards.length}
