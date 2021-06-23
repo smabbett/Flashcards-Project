@@ -15,4 +15,6 @@ The application allows teachers to create, update, read and delete decks of flas
 
 - [Flashcards App](https://flashcards-wine.vercel.app/)
 
+## Screenshot
+
 ![Screenshot](./src/images/screenshot_flash.png)
